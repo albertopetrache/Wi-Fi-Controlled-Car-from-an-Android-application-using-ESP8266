@@ -11,6 +11,7 @@ developed the Android application in Android Studio.
 
 The electrical schematic of the remote-controlled car was created using OrCAD Capture CIS 16.6, and later transferred to OrCAD PCB Editor for the design of the printed circuit board (PCB) required for the car's operation.
 ![image](https://github.com/user-attachments/assets/c6198bc8-a951-4a00-9405-cc71759a3d86)
+
 The printed circuit board (PCB) has the following design details:
 
 PCB dimensions: 90mm x 140mm
