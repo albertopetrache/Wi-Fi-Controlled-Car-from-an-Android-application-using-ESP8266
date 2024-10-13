@@ -8,6 +8,8 @@ headlights, turn left, turn right and changing the speed by increasing or decrea
 duty cycle of the PWM signal. The control of the four DC motors is achieved using a
 H‐bridge converter (DRV8835). I also designed the printed circuit board (PCB) and
 developed the Android application in Android Studio.
+
+The electrical schematic of the remote-controlled car was created using OrCAD Capture CIS 16.6, and later transferred to OrCAD PCB Editor for the design of the printed circuit board (PCB) required for the car's operation.
 ![image](https://github.com/user-attachments/assets/c6198bc8-a951-4a00-9405-cc71759a3d86)
 ![image](https://github.com/user-attachments/assets/0edf45a7-08bf-46fc-956f-143aeaba3691)
 ![image](https://github.com/user-attachments/assets/47839563-4c5d-4601-96b9-67567f62ec55)
