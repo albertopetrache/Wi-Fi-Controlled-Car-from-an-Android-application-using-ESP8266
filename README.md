@@ -1,4 +1,4 @@
-# Wi-Fi-Controlled-Car-from-an-Android-application-using-ESP8266
+# Wi-Fi Controlled Car from an Android application using ESP8266
 
 In this project I made a remote controlled car using the ESP8266 module. I used a
 chassis with four DC motors, that I controlled using an ATMEL 8‐bit microcontroller
