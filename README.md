@@ -10,20 +10,10 @@ H‐bridge converter (DRV8835). I also designed the printed circuit board (PCB) 
 developed the Android application in Android Studio.
 
 The electrical schematic of the remote-controlled car was created using OrCAD Capture CIS 16.6, and later transferred to OrCAD PCB Editor for the design of the printed circuit board (PCB) required for the car's operation.
+
 ![image](https://github.com/user-attachments/assets/c6198bc8-a951-4a00-9405-cc71759a3d86)
 
-The printed circuit board (PCB) has the following design details:
-
-PCB dimensions: 90mm x 140mm
-Copper foil thickness: 35 µm
-Material: FR4, double-layer
-Board thickness: 1.6 mm
-All components are placed on the top side of the PCB (TOP layer)
-The origin is located in the bottom-left corner of the PCB, with all elements having positive coordinates
-Components used include both SMD for resistors and capacitors, and THT
-A clearance of 50 mil was maintained from the edge of the board
-Four mounting holes, each 4 mm in diameter, were designed to secure the PCB to the chassis
-GND and VCC interconnection traces are 40 mil wide, while other traces are 20 mil wide.
+The printed circuit board (PCB) measures 90mm x 140mm, with a copper foil thickness of 35 µm and is made of FR4 material with a double-layer design. The board has a thickness of 1.6 mm, and all components are placed on the top side (TOP layer). The origin is set in the bottom-left corner, ensuring all elements have positive coordinates. Both SMD components, such as resistors and capacitors, and THT components are used. A clearance of 50 mil is maintained from the board's edge. Additionally, four mounting holes with a 4 mm diameter are included to secure the PCB to the chassis. The GND and VCC traces have a width of 40 mil, while other traces are 20 mil wide.
 
 ![image](https://github.com/user-attachments/assets/0edf45a7-08bf-46fc-956f-143aeaba3691)
 
