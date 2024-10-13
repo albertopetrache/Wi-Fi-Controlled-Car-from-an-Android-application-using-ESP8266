@@ -24,7 +24,9 @@ Components used include both SMD for resistors and capacitors, and THT
 A clearance of 50 mil was maintained from the edge of the board
 Four mounting holes, each 4 mm in diameter, were designed to secure the PCB to the chassis
 GND and VCC interconnection traces are 40 mil wide, while other traces are 20 mil wide.
+
 ![image](https://github.com/user-attachments/assets/0edf45a7-08bf-46fc-956f-143aeaba3691)
+
 For the power circuit, I chose to use two voltage regulators: an LM1086IT-3.3 to provide a stable 3.3V supply and an LM7805 to provide a stable 5V supply. The LM1086IT-3.3 regulator is used to power the ESP-01 Wi-Fi module, which operates at 3.3V, while the LM7805 is used to power the other components. Both regulators are powered by six AA batteries, each supplying 1.5V, for a total of 9V. For the four DC motors, a separate power supply consisting of four AA batteries (1.5V each, providing 6V in total) was selected.
 
 ![image](https://github.com/user-attachments/assets/47839563-4c5d-4601-96b9-67567f62ec55)
