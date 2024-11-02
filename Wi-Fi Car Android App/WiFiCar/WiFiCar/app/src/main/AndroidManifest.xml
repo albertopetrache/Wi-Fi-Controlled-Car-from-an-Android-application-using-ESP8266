@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- se specifica ca aplicatia utilizeaza
+     permisiunea "INTERNET" pentru acces-ul la comunicatia prin retea  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- se declara elementul <application> care contine configurarile aplicatiei -->
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WiFiCar"
+        tools:targetApi="31">
+        <!-- se declara activitatea SecondActivity care are ca activitate parinte
+         MainActivity si poate fi accesata din aceasta -->
+        <activity
+            android:name=".SecondActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
+        <!-- se declara activitatea principala MainActivity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <!-- se declara filtrul de intent-uri pentru MainActivity -->
+            <intent-filter>
+                <!-- se specifica ca activitatea MainActivity este
+                activitatea principală a aplicației -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- se specifica ca activitatea va fi lansata la pornirea aplicatiei -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,400 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 16.6.0 d001Apr-18-2023 at 19:33:44 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='MASINUTA_WI-FI';
+ POST_TIME='Aug  3 2015 18:16:55';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ BUZZ1 'BUZZER_3_JUMPER3_BUZZER':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS1878@MASINUTA_WI-FI.BUZZER_3.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins1878@\masinuta_wi-fi\.\buzzer_3.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins1878@\masinuta_wi-fi\.\buzzer_3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C1 'CAP POL_0_CAPTHT_10U':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5961@MASINUTA_WI-FI.CAP POL_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5961@\masinuta_wi-fi\.\cap pol_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5961@\masinuta_wi-fi\.\cap pol_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C10 'C_SMC0805_22P':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS8733@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins8733@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins8733@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C2 'CAP POL_3_CAPTHT_10U':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5986@MASINUTA_WI-FI.CAP POL_3.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5986@\masinuta_wi-fi\.\cap pol_3.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5986@\masinuta_wi-fi\.\cap pol_3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C3 'CAP POL_4_CAPTHT_0.33U':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS6202@MASINUTA_WI-FI.CAP POL_4.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins6202@\masinuta_wi-fi\.\cap pol_4.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins6202@\masinuta_wi-fi\.\cap pol_4.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C4 'CAP POL_4_CAPTHT_0.1U':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS6218@MASINUTA_WI-FI.CAP POL_4.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins6218@\masinuta_wi-fi\.\cap pol_4.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins6218@\masinuta_wi-fi\.\cap pol_4.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C5 'C_SMC0805_100N':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS35749@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins35749@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins35749@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C6 'C_SMC0805_100N':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS65981@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins65981@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins65981@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C7 'C_SMC0805_100N':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS53403@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins53403@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins53403@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C8 'C_SMC0805_100N':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS53429@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins53429@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins53429@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C9 'C_SMC0805_22P':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS8708@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins8708@discrete.\c.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins8708@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D1 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12456@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12456@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12456@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D2 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12440@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12440@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12440@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D3 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12424@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12424@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12424@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D4 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12408@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12408@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12408@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D5 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12392@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12392@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12392@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D6 'LED_0_JUMPER2_LED':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS12376@MASINUTA_WI-FI.LED_0.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins12376@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins12376@\masinuta_wi-fi\.\led_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J1 'HEADER 5X2_1_CONN10_ISP':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS51572@MASINUTA_WI-FI.HEADER 5X2_1.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins51572@\masinuta_wi-fi\.\header 5x2_1.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins51572@\masinuta_wi-fi\.\header 5x2_1.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J2 'HEADER 2_JUMPER2_DC MOTOR':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5639@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5639@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5639@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J3 'HEADER 2_JUMPER2_DC MOTOR':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5613@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5613@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5613@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J4 'HEADER 2_JUMPER2_VCC':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5839@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5839@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5839@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J5 'HEADER 2_JUMPER2_DC MOTOR':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5691@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5691@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5691@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J6 'HEADER 2_JUMPER2_DC MOTOR':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5675@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5675@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5675@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J7 'HEADER 2_JUMPER2_VCC MOTOARE':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS61787@CONNECTOR.HEADER 2.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins61787@connector.\header 2.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins61787@connector.\header 2.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R1 'R_SMR0805_1.8K':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS7802@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins7802@discrete.\r.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins7802@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R2 'R_SMR0805_10K':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS27109@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins27109@discrete.\r.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins27109@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R3 'R_SMR0805_100':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS14765@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins14765@discrete.\r.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins14765@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R4 'R_SMR0805_100':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS14802@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins14802@discrete.\r.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins14802@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R5 'R_SMR0805_100':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS14839@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins14839@discrete.\r.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins14839@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ SW1 'SW PUSHBUTTON-SPST-NC_4_PUSHSW_':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS59001@MASINUTA_WI-FI.SW PUSHBUTTON-SPST-NC_4.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins59001@\masinuta_wi-fi\.\sw pushbutton-spst-nc_4.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins59001@\masinuta_wi-fi\.\sw pushbutton-spst-nc_4.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U1 'LM1117T-33_10_TO254_LM1117T-33':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS1256@MASINUTA_WI-FI.LM1117T-33_10.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins1256@\masinuta_wi-fi\.\lm1117t-33_10.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins1256@\masinuta_wi-fi\.\lm1117t-33_10.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U2 'LCD-16X2_6_LCD-16X2_LCD-16X2':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS3288@MASINUTA_WI-FI.LCD-16X2_6.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins3288@\masinuta_wi-fi\.\lcd-16x2_6.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins3288@\masinuta_wi-fi\.\lcd-16x2_6.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U3 'HC-SR04_JUMPER4_HC-SR04':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS1201@HC-SR04.HC-SR04.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins1201@\hc-sr04\.\hc-sr04.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins1201@\hc-sr04\.\hc-sr04.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U4 'DRV8835_3_DRV8835_DRV8835':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5446@MASINUTA_WI-FI.DRV8835_3.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5446@\masinuta_wi-fi\.\drv8835_3.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5446@\masinuta_wi-fi\.\drv8835_3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U5 'LM7805C_8_TO254_LM7805C':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS1567@MASINUTA_WI-FI.LM7805C_8.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins1567@\masinuta_wi-fi\.\lm7805c_8.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins1567@\masinuta_wi-fi\.\lm7805c_8.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U6 'ATMEGA1284-PU_3_DIP40_6_ATMEGA1':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS32767@MASINUTA_WI-FI.ATMEGA1284-PU_3.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins32767@\masinuta_wi-fi\.\atmega1284-pu_3.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins32767@\masinuta_wi-fi\.\atmega1284-pu_3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U7 'BOB-12009_5_LOGICLEVELCONV_CONV':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5277@MASINUTA_WI-FI.BOB-12009_5.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5277@\masinuta_wi-fi\.\bob-12009_5.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5277@\masinuta_wi-fi\.\bob-12009_5.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U8 'ESP8266-01ESP-01_3_ESP01_ESP-01':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS731@MASINUTA_WI-FI.ESP8266-01ESP-01_3.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins731@\masinuta_wi-fi\.\esp8266-01esp-01_3.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins731@\masinuta_wi-fi\.\esp8266-01esp-01_3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ Y1 'CRYSTAL_HC49_14.7456MHZ':;
+
+SECTION_NUMBER 1
+ '@MASINUTA_WI-FI.SCHEMATIC1(SCH_1):INS5722@DISCRETE.CRYSTAL.NORMAL(CHIPS)':
+ C_PATH='@\masinuta_wi-fi\.schematic1(sch_1):ins5722@discrete.\crystal.normal\(chips)',
+ P_PATH='@\masinuta_wi-fi\.schematic1(sch_1):page1_ins5722@discrete.\crystal.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.
