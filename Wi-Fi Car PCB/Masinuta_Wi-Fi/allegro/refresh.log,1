@@ -1,0 +1,94 @@
+Fri Apr 28 19:47:23 2023				Page     1
+
+
+ 
+Update Symbols/Modules Logfile
+	Fri Apr 28 19:47:23 2023
+
+------ Module Refresh Messages ------
+
+SUMMARY:    Updated 0 out of 0 modules
+
+------ End Module Messages     ------
+
+
+
+(---------------------------------------------------------------------)
+(                                                                     )
+(    Refresh Symbol                                                   )
+(                                                                     )
+(    Drawing          : MASINUTA_WI-FI.brd                            )
+(    Software Version : 16.6-2015S059                                 )
+(    Date/Time        : Fri Apr 28 19:47:23 2023                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+Fri Apr 28 19:47:23 2023				Page     1
+
+
+------ Symbol Refresh Directives ------
+
+Input design  = 'D:/proiecte orcad/Masinuta_Wi-Fi/allegro/MASINUTA_WI-FI.brd'
+Output design = ''
+
+Update mechanical symbols              = 'YES'
+Update format symbols                  = 'NO'
+Update package symbols                 = 'YES'
+Update shape/flash symbols             = 'YES'
+Update symbol padstacks                = 'NO'
+Preserve padstacks replaced on pins    = 'NO'
+Reset symbol text and size locations   = 'NO'
+Reset Pin Escapes (fanouts)            = 'NO'
+Ripup Etch                             = 'NO'
+Reset custom drill data                = 'NO'
+
+
+------ Library Paths ------
+PSMPATH =  . 
+           symbols 
+           .. 
+           ../symbols 
+           C:/OrCAD/OrCAD_16.6_Lite/share/local/pcb/symbols 
+           C:/OrCAD/OrCAD_16.6_Lite/share/pcb/pcb_lib/symbols 
+           C:/OrCAD/OrCAD_16.6_Lite/share/pcb/allegrolib/symbols 
+
+PADPATH =  . 
+           symbols 
+           .. 
+           ../symbols 
+           C:/OrCAD/OrCAD_16.6_Lite/share/local/pcb/padstacks 
+           C:/OrCAD/OrCAD_16.6_Lite/share/pcb/pcb_lib/symbols 
+           C:/OrCAD/OrCAD_16.6_Lite/share/pcb/allegrolib/symbols 
+
+
+------ Symbol Refresh Messages ------
+
+'DRV8835'  symbol refreshed successfully.
+
+'LCD-16X2'  symbol starting to refresh:
+     WARNING(SPMHNI-273): Component 'U2', symbol 'LCD-16X2', location (1770.00 1130.00) had edited pins.
+     
+     'LCD-16X2'  symbol refreshed successfully.
+'MOUNTING_HOLE1'  symbol refreshed successfully.
+'DIP40_6'  symbol refreshed successfully.
+'TO254'  symbol refreshed successfully.
+'CAPTHT'  symbol refreshed successfully.
+'ESP01'  symbol refreshed successfully.
+'PUSHSW'  symbol refreshed successfully.
+'SMC0805'  symbol refreshed successfully.
+'HC49'  symbol refreshed successfully.
+'JUMPER3'  symbol refreshed successfully.
+'CONN10'  symbol refreshed successfully.
+'LOGICLEVELCONV'  symbol refreshed successfully.
+'JUMPER2'  symbol refreshed successfully.
+'SMR0805'  symbol refreshed successfully.
+'JUMPER4'  symbol refreshed successfully.
+'AB00'  symbol refreshed successfully.
+
+
+----- Symbol Update Summary ----
+
+Refresh symbol errors; due to these errors this design is NOT updated.
+       1  errors detected.
+       1  warnings detected.
