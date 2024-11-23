@@ -13,18 +13,17 @@
 #include <stdlib.h>
 #include <avr/interrupt.h>
 
-// se declara variabila count care va numara
-// de cate ori timer 0 ajunge la valoarea maxima
+#define HC_SR04_NUM_ITERATIONS 		1
+static int flag = 0;
 static int count = 0;
 static int saved_tcnt0 = 0;
 static int saved_count = 0;
-static int flag = 0;
 
-// 1 daca am primit comenzi 
+// 1 daca am primit comenzi
 static int date_primite = 0;
-// dimensiunea bufferului
+// size-ul bufferului
 static int rx_size=50;
-// buffer in care se salveaza mesajele primite de la modulul wireless
+// buffer in care salvez mesajele primite de la modulul wireless
 static char rx_buffer[50];
 // var care marcheaza finalul mesajului primit
 static int index_buffer = 0;
@@ -33,8 +32,8 @@ static char received_byte;
 static int inainte=0;
 static int inapoi=0;
 // 1 daca masina ia un viraj, 0 altfel
-
-static int viraj = -1; // 0 = viraj stanga, 1 = viraj dreapta
+static int drifting = 0;
+static int direction = -1; // 0 = viraj stanga, 1 = viraj dreapta
 // factorul vechi de umplere al motorului pana sa ia virajul
 static int saved = 0;
 static int avarii = 0;
@@ -43,58 +42,43 @@ static int sem_dr=0;
 
 
 void Comanda_LCD(unsigned char comanda)
-{	// se trimit cei mai semnificativi 4 biti
-	LCD_port = (LCD_port & 0x0F) | (comanda & 0xF0); 
-	// setam RS la 0 pentru transmiterea comenzii
-	LCD_port &= ~ (1<<RS);
-	// se activeaza pinul EN							 
-	LCD_port |= (1<<EN);								 
+{
+	LCD_port = (LCD_port & 0x0F) | (comanda & 0xF0); // se trimit cei mai semnificativi 4 biti
+	LCD_port &= ~ (1<<RS);							 // setam RS la 0 pentru transmiterea comenzii
+	LCD_port |= (1<<EN);							 // se activeaza pinul EN
 	_delay_us(1);
-	// se dezactiveaza pinul EN
-	LCD_port &= ~ (1<<EN);							 
+	LCD_port &= ~ (1<<EN);							 // se dezactiveaza pinul EN
 
 	_delay_us(200);
-	
-	// se trimit cei mai putin semnificativi 4 biti
-	LCD_port = (LCD_port & 0x0F) | (comanda << 4); 
-	// se activeaza pinul EN  
-	LCD_port |= (1<<EN);							 
+
+	LCD_port = (LCD_port & 0x0F) | (comanda << 4);   // se trimit cei mai putin semnificativi 4 biti
+	LCD_port |= (1<<EN);							 // se activeaza pinul EN
 	_delay_us(1);
-	 // se dezactiveaza pinul EN
-	LCD_port &= ~ (1<<EN);							
+	LCD_port &= ~ (1<<EN);							 // se dezactiveaza pinul EN
 	_delay_ms(2);
 }
 
 void LCD_send_char(unsigned char data)
-{	
-	// se trimit cei mai semnificativi 4 biti
-	LCD_port = (LCD_port & 0x0F) | (data & 0xF0);
-	// setam pinul RS la 1 pentru a indica ca transmitem date	
-	LCD_port |= (1<<RS);
-	// se activeaza pinul EN							
-	LCD_port |= (1<<EN);								
+{
+	LCD_port = (LCD_port & 0x0F) | (data & 0xF0);	// se trimit cei mai semnificativi 4 biti
+	LCD_port |= (1<<RS);							// setam pinul RS la 1 pentru a indica ca transmitem date
+	LCD_port |= (1<<EN);							// se activeaza pinul EN
 	_delay_us(1);
-	// se dezactiveaza pinul EN
-	LCD_port &= ~ (1<<EN);	
-							
+	LCD_port &= ~ (1<<EN);							// se dezactiveaza pinul EN
 
 	_delay_us(200);
-	
-	// se transmit cei mai putin semnificativi 4 biti
-	LCD_port = (LCD_port & 0x0F) | (data << 4);
-	// se activeaza pinul EN		
-	LCD_port |= (1<<EN);							
+
+	LCD_port = (LCD_port & 0x0F) | (data << 4);		// se transmit cei mai putin semnificativi 4 biti
+	LCD_port |= (1<<EN);							// se activeaza pinul EN
 	_delay_us(1);
-	// se dezactiveaza pinul EN
-	LCD_port &= ~ (1<<EN);							
+	LCD_port &= ~ (1<<EN);							// se dezactiveaza pinul EN
 	_delay_ms(2);
 }
 
 void LCD_send_string (char *str)
 {
 	int i;
-	
-	for(i=0;str[i]!=0;i++)			
+	for(i=0;str[i]!=0;i++)			// se transmite sirul de caractere pana la intalnirea caracterului NULL
 	{
 		LCD_send_char(str[i]);
 	}
@@ -102,38 +86,34 @@ void LCD_send_string (char *str)
 
 void initializare_LCD (void)
 {
-	// seteaza ca port de iesire
-	LCD_dir = 0xFF;					
+	LCD_dir = 0xFF;					// seteaza ca port de iesire
 	_delay_ms(20);
-	// trecere la modul de 4 biti (datele sunt transmise pe 4 linii de date, D4-7)
-	Comanda_LCD(0x02);	
-	// initializare LCD in modul de 4 biti si afisare pe 2 linii, matrice 5x7			
-	Comanda_LCD(0x28);
-	// ascunde cursorul si dezactiveaza efectul de blink             
-	Comanda_LCD(0x0c);  
-	// se seteaza modul de afisare pentru deplasare la dreapta            
-	Comanda_LCD(0x06); 
-	// sterge ecranul            
-	Comanda_LCD(0x01); 
-	            
+	
+	Comanda_LCD(0x02);				// trecere la modul de 4 biti (datele sunt transmise pe 4 linii de date, D4-7)
+	Comanda_LCD(0x28);              // initializare LCD in modul de 4 biti si afisare pe 2 linii
+	Comanda_LCD(0x0c);              // ascunde cursorul si dezactiveaza efectul de blink
+	Comanda_LCD(0x06);              // se seteaza modul de afisare pentru deplasare la dreapta
+	Comanda_LCD(0x01);              // sterge ecranul
 	_delay_ms(2);
 }
 
 void LCD_Clear()
-{	// sterge ecranul
-	Comanda_LCD (0x01);		
+{
+	Comanda_LCD (0x01);		// sterge ecranul
 	_delay_ms(2);
-	// se seteaza cursorul pe prima pozitie a primei linii
-	Comanda_LCD (0x80);		
+	Comanda_LCD (0x80);		// se seteaza cursorul pe prima pozitie a primei linii
 }
 
 void timer0_init()
 {
-	// se seteaza prescaler-ul la 256 => T = 1/0.0576 = 17.361us	
-	TCCR0B |= (1 << CS02);
-	// se activeaza intreruperea de overflow
-	TIMSK0 |= (1 << TOIE0); 
-		
+	
+
+	
+	TCCR0B |= (1 << CS02); //se seteaza prescaler-ul la 256 => T = 16us
+	TIMSK0 |= (1 << TOIE0);
+	
+	
+	
 }
 
 void timer1_init()
@@ -141,14 +121,15 @@ void timer1_init()
 	// Fast PWM pe 8 biti non-inverting cu top la 0x00FF, prescaler de 1, output atat pe canalul A cat si pe B
 	TCCR1A |= (1 << WGM10) | (1 << COM1A1) | (1 << COM1B1);
 	TCCR1B |= (1 << WGM12) | (1 << CS10);
-	// se initializeaza valoarea registrelor OCR cu 0
+
+	
 	OCR1A = 0;
 	OCR1B = 0;
 }
 
 void timer2_init()
 {
-	// Fast PWM cu top la 0xFF, prescaler 128, output pe canalul B
+	// Fast PWM cu top la 0xFF, prescaler 128
 	OCR2B = 255;
 	TCCR2A |= (1 << COM2B1) | (1 << WGM20) | (1 << WGM21);
 	TCCR2B |= (1 << CS22) | (1 << CS20);
@@ -156,45 +137,40 @@ void timer2_init()
 
 void timer3_init()
 {
-	// Frecventa de 2Hz
-	ICR3 = 28799;
+	// FRECVENTA 2HZ, semnal si pe canalul A si pe canalul B pentru fiecare semnalizare
+	ICR3 = 57599;
 	OCR3A = ICR3 + 1;
 	OCR3B = ICR3 + 1;
-	// CTC cu top la ICR3, prescaler 256	
+	// CTC cu top la ICR1, prescaler 64
 	TCCR3B |= (1 << WGM33) | (1 << WGM32) | (1 << CS32);
-	// se activeaza intreruperile Output Compare A Match si B Match
+	// enable la intreruperi
 	TIMSK3 |= (1 << OCIE3B) | (1 << OCIE3A);
 }
 
-
 void USART0_init()
 {
-	// se seteaza baud rate-ul
+	//setam baud rate-ul
 	UBRR0=7;
-	// se activeaza receptorul, transmitatorul si intreruperile pentru receptia USART
-	UCSR0B = (1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0); 
-	// se seteaza formatul frame-ului la 8 biti de date, 1 bit de stop, fara paritate
-	UCSR0C = (1 << UCSZ00) | (1 << UCSZ01);
+	
+	UCSR0B = (1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0);
+	UCSR0C = (3<<UCSZ00);
 }
 
-// functie pentru trimiterea unui caracter prin USART
+
 void USART0_transmit(char data)
 {
-	// se asteapta pana cand buffer-ul e gata sa primeasca date
+	// se asteapta pana cand buffer-ul e gol
 	while(!(UCSR0A & (1<<UDRE0)));
 
-	// se incarca caracterul in buffer, fiind gata sa fie trimis prin USART
+	// se pun datele in buffer, transmisia pornind automat in urma scrierii
 	UDR0 = data;
 }
 
-// functie pentru transmiterea unui sir de caractere prin USART
+//Functie pentru transmiterea unui sir de caractere prin USART
 void USART0_print(const char *data)
 {
 	while(*data != '\0')
-	{
-		USART0_transmit(*data++);
-	}
-	
+	USART0_transmit(*data++);
 }
 
 
@@ -205,7 +181,7 @@ void executare_comanda()
 	if(strstr(rx_buffer,"inainte")){
 		
 		LCD_Clear();
-		LCD_send_string("Mers înainte");
+		LCD_send_string("inainte");
 		PORTB &= ~(1 << PB0);
 		PORTB &= ~(1 << PB1);
 		OCR1A=151;
@@ -218,7 +194,7 @@ void executare_comanda()
 	else if(strstr(rx_buffer,"inapoi")){
 		
 		LCD_Clear();
-		LCD_send_string("Mers înapoi");
+		LCD_send_string("inapoi");
 		PORTB |= 1 << PB0;
 		PORTB |= 1 << PB1;
 		OCR1A=151;
@@ -231,97 +207,95 @@ void executare_comanda()
 	
 	
 	else if(strstr(rx_buffer,"frana")){
-		
 		LCD_Clear();
-		LCD_send_string("Frân?");
+		LCD_send_string("frana");
 		PORTB &= ~(1 << PB0);
 		PORTB &= ~(1 << PB1);
 		OCR1A=0;
 		OCR1B=0;
-		inapoi = 0;
-		inainte = 0;
-		viraj = -1;
+		inapoi=0;
+		inainte=0;
+		drifting=0;
 		goto finish;
 		
 	}
 	
 	
-	else if (strstr(rx_buffer, "stanga")) {		
+	else if (strstr(rx_buffer, "stanga")) {
 		LCD_Clear();
-		LCD_send_string("Viraj stanga");
-		// daca masina nu se afla in miscare, se face un salt la eticheta finish
+		LCD_send_string("stanga");
+		// daca masina nu se afla in miscare, nu fac nimic
 		if (inainte == 0 && inapoi==0)
-			goto finish;
-		
-		// daca virajul nu a fost inceput 
-		if (viraj == -1)
+		goto finish;
+		// incep virajul, salvez vechea valoare la OCR-ului si directia in care se face virajul
+		if (drifting == 0)
 		{
-			// se salveaza valoarea veche a OCR-ului
+			
 			saved = OCR1B;
-			// pentru inceperea virajului la stanga se opresc rotile de pe partea dreapta
 			OCR1B = 0;
-			viraj = 1; // viraj stanga
+			drifting = 1;
+			direction = 0;
 			
 		}
 		else
 		{
-			// daca virajul nu a fost inceput in aceasta directie
-			if (viraj != 1)
-				goto finish;
-			// se opreste virajul si se reface valoarea OCR-ului
+			// daca virajul nu a fost inceput in aceasta directie, nu fac nimic
+			if (direction != 0)
+			goto finish;
+			// opresc virajul, refac valoarea OCR-ului
 			OCR1B = saved;
-			viraj = -1; 
-		}		
+			drifting = 0;
+			direction = -1;
+		}
+		
 	}
 	
 	
 	else if (strstr(rx_buffer, "dreapta")) {
 		
 		LCD_Clear();
-		LCD_send_string("Viraj dreapta");
+		LCD_send_string("dreapta");
 		// analog ca mai sus, doar ca pe dos
 		if (inainte == 0 && inapoi == 0)
-			goto finish;
-		if (viraj == -1)
+		goto finish;
+		if (drifting == 0)
 		{
 			
 			saved = OCR1A;
 			OCR1A = 0;
-			viraj = 0; //viraj dreapta
+			drifting = 1;
+			direction = 1	;
 			
 		}
 		else {
-			// daca virajul nu a fost inceput in aceasta directie
-			if (viraj != 0)
-				goto finish;
-			// se opreste virajul si se reface valoarea OCR-ului
+			if (direction != 1)
+			goto finish;
 			OCR1A = saved;
-			viraj = -1;
+			drifting = 0;
+			direction = -1;
 		}
 	}
 	
 	else if (strstr(rx_buffer, "speedup")) {
-				
+		
 		LCD_Clear();
-		LCD_send_string("Speed Up");
-		// daca motoarele se rotesc la viteza maxima
+		LCD_send_string("speedup");
 		if(OCR1A == 255 && OCR1B == 255)
-			goto finish;
-		// daca masina merge in directia inainte sau inapoi 	
+		goto finish;
 		if(inainte == 1 || inapoi == 1)
 		{
 			OCR1A = OCR1A + 26;
 			OCR1B = OCR1B + 26;
-		}		
+		}
+		
+		
 	}
-	
-	
 	else if (strstr(rx_buffer, "slowdown")) {
 		
 		LCD_Clear();
-		LCD_send_string("Slow Down");
+		LCD_send_string("slowdown");
 		if(OCR1A == 151 && OCR1B == 151)
-			goto finish;
+		goto finish;
 		if(inainte == 1 || inapoi == 1)
 		{
 			OCR1A = OCR1A - 26;
@@ -334,7 +308,7 @@ void executare_comanda()
 	else if(strstr(rx_buffer,"faruri")){
 		
 		LCD_Clear();
-		LCD_send_string("Aprindere faruri");
+		LCD_send_string("faruri");
 		PORTC ^= (1 << PC0);
 	}
 	
@@ -342,52 +316,53 @@ void executare_comanda()
 	{
 		
 		LCD_Clear();
-		LCD_send_string("Avarii");
-		// daca avariile sunt oprite
+		LCD_send_string("avarii");
+		//daca avariile sunt oprite
 		if (avarii == 0)
 		{
 			
 			avarii=1;
-			sem_st=1;
-			sem_dr=1;			
+			TCNT3 = 0;
 			OCR3A = ICR3 / 2;
 			OCR3B = ICR3 / 2;
 			
 		}
 		else if (avarii == 1)
 		{
-				
+			
+			TCNT3 = 0;
 			OCR3A = ICR3 + 1;
-			OCR3B = ICR3 + 1;			
+			OCR3B = ICR3 + 1;
+			PORTD &= ~(1 << PD2);
+			PORTD &= ~(1 << PD3);
 			avarii=0;
-			sem_st=0;
-			sem_dr=0;
 		}
 		
 		
 	}
 	
-	else if(strstr(rx_buffer,"sem_st")){
+	else if(strstr(rx_buffer,"sem_dr")){
 		LCD_Clear();
-		LCD_send_string("Semnalizare stânga");
+		LCD_send_string("sem_dr");
 		if (avarii == 1)
-			goto finish;
+		goto finish;
 		// daca semnalizarea era oprita
 		if (sem_st == 0)
 		{
-			
-			// opresc semnalizarea dreapta
-			OCR3B = ICR3+1;
-			PORTD &= ~(1 << PD2);
-			// pornesc semnalizarea stanga
+			TCNT3 = 0;
+			// opresc semnalizarea stanga
+			OCR3B = ICR3 + 1;
+			// pornesc semnalizarea dreapta
 			OCR3A = ICR3 / 2;
 			sem_st=1;
 		}
 		else
 		{
 			// altfel opresc semnalizarea
-			
-			OCR3A = ICR3+1;		
+			TCNT3 = 0;
+			OCR3A = ICR3 + 1;
+			PORTD &= ~(1 << PD2);
+			PORTD &= ~(1 << PD3);
 			sem_st=0;
 		}
 		
@@ -395,28 +370,29 @@ void executare_comanda()
 	
 	
 	
-	else if (strstr(rx_buffer, "sem_dr")) {
+	else if (strstr(rx_buffer, "sem_st")) {
 
 		LCD_Clear();
-		LCD_send_string("Semnalizare dreapta");
+		LCD_send_string("sem_st");
 		if (avarii == 1)
-			goto finish;
+		goto finish;
 		// daca semnalizarea era oprita
 		if (sem_dr == 0)
 		{
-			// opresc semnalizarea stanga
-			
+			// opresc semnalizrea dreapta
+			TCNT3 = 0;
 			OCR3A = ICR3 + 1;
-			PORTD &= ~(1 << PD3);
-			// pornesc semnalizarea dreapta
+			// pornesc semnalizarea stanga
 			OCR3B = ICR3 / 2;
 			sem_dr=1;
-			
 		}
 		else
 		{
-			// altfel opresc semnalizarea			
-			OCR3B = ICR3 + 1;						
+			// altfel opresc semnalizarea
+			TCNT3 = 0;
+			OCR3B = ICR3 + 1;
+			PORTD &= ~(1 << PD2);
+			PORTD &= ~(1 << PD3);
 			sem_dr=0;
 		}
 		
@@ -424,9 +400,9 @@ void executare_comanda()
 	
 	else if (strstr(rx_buffer, "claxon")) {
 		LCD_Clear();
-		LCD_send_string("Claxon");
+		LCD_send_string("claxon");
 		
-		OCR2B = 255 + 114 - OCR2B;
+		OCR2B = 255 + 128 - OCR2B;
 	}
 	
 	finish:
@@ -437,71 +413,57 @@ ISR(USART0_RX_vect)
 {
 	
 	received_byte = UDR0;
-	// se introduc in sirul de caractere rx_buffer caracterele primite de la modulul Wi-Fi
+	// Retin caracterele primite de la modul, bufferul se goleste cand se fac citiri din el
 	if (index_buffer < rx_size)
-	{
-		rx_buffer[index_buffer++] = received_byte;
-	}
-	// se marcheaza sfarsitul sirului de caractere
-	rx_buffer[index_buffer] = '\0';	
+	rx_buffer[index_buffer++] = received_byte;
+	
+	rx_buffer[index_buffer] = '\0';
+
+	// Setez alerta de receive
 	date_primite = 1;
 	
 }
 
 // toggle la semnalizarea dreapta
-ISR(TIMER3_COMPB_vect)
-{
-	//se comuta starea pinului PD2
+ISR(TIMER3_COMPA_vect) {
 	PORTD ^= (1 << PD2);
-
 }
 
 // toggle la semnalizarea stanga
-ISR(TIMER3_COMPA_vect) 
-{
-	// se comuta starea pinului PD3	
-	PORTD ^= (1 << PD3);	
+ISR(TIMER3_COMPB_vect) {
+	PORTD ^= (1 << PD3);
 }
 
 
 ISR(TIMER0_OVF_vect)
 {
-	
 	count++;
 }
 
 ISR(PCINT0_vect)
 {
-	//daca pinul ECHO e pe HIGH
-	if (PINA & (1 << PA3)) {
-		// se reseteaza registrul TCNT0 si variabila count si se incepe
-		// o noua masuratoare
+	if ((PINA & (1 << PA3)) != 0) {
 		TCNT0 = 0;
 		count = 0;
-		flag=0;
 	}
 	else {
-		//daca pinul ECHO e pe LOW (undele au fost reflectate inapoi de la obiect)
-		//si s-a incheiat masuratoarea 
-		//se salveaza valorile registrului TCNT0 si variabilei count
 		saved_tcnt0 = TCNT0;
 		saved_count = count;
-		flag=1;
+		flag = 1;
 	}
 }
 
 
 void initializare_HCSR04()
 {
-	// Trigger (port de iesire)
-	DDRA |= (1 << PA2);
-	// Echo   (port de intrare)
-	DDRA &= ~(1 << PA3); 
+	//Pini pentru Echo si Trigger
+	DDRA |= (1 << PA2); // Trigger
+	DDRA &= ~(1 << PA3); // Echo
+
 	PORTA &= ~(1 << PA2);
 	
-	//activare intrerupere de tip pin change pentru grupul PCINT[7:0]
+	//activare intrerupere de tip pin change pe pinul Echo PA3
 	PCICR |= (1 << PCIE0);
-	//activare intrerupere de tip pin change pe pinul Echo PA3	
 	PCMSK0 |= (1 << PCINT3);
 }
 
@@ -512,12 +474,12 @@ void initializare_motoare()
 }
 
 void initializare_leduri()
-{	//semnalizari si avarii
-	DDRD |= (1 << PD2) | (1 << PD3); 
+{
+	DDRD |= (1 << PD2) | (1 << PD3); //semnalizari si avarii
 	PORTD &= ~(1 << PD2);
 	PORTD &= ~(1 << PD3);
-	//faruri
-	DDRC |= (1 << PC0);	
+	
+	DDRC |= (1 << PC0);	//faruri
 }
 
 void initializare_buzzer()
@@ -528,71 +490,77 @@ void initializare_buzzer()
 
 float get_distance()
 {
-	double distanta=0;
-	
-	//Reset Trigger
-	PORTA &= ~(1 << PA2);
-	_delay_us(5);
+	double sum = 0;
+	for (int i = 1; i <= HC_SR04_NUM_ITERATIONS; i++) {
+		flag = 0;
+		
+		//Reset Trigger
+		PORTA &= ~(1 << PA2);
+		_delay_us(5);
 
-	//Trimite semnal catre Trigger
-	PORTA |= (1 << PA2);
-	_delay_us(11);
-	PORTA &= ~(1 << PA2);
-	
-	//se asteapta pana se incheie masuratoarea
-	while (flag == 0);
-	
-	//viteza sunetului in aer la 20C = 343m/s
-	distanta = ((unsigned int)saved_tcnt0 + 255 * saved_count) * (17150*17.361*1E-6);
-	
-	return distanta;
-	
-	
+		//Trimite semnal catre Trigger
+		PORTA |= (1 << PA2);
+		_delay_us(11);
+		PORTA &= ~(1 << PA2);
+		
+		//Asteapta pentru semnalul de la Echo
+		while(flag == 0 && count <= 5);
+		
+		sum = sum + (((int)saved_tcnt0 + 255 * saved_count) * 16.0) * 0.014;
+		
+		if (i < HC_SR04_NUM_ITERATIONS)
+		_delay_ms(75);
+	}
+
+	return sum / HC_SR04_NUM_ITERATIONS;
 }
 
 
 void initializare_wifi()
 {
-	// se activeaza intreruperile globale
-	sei();	
-	// se configureaza modulul ESP-01 ca statie 
-	USART0_print("AT+CWMODE=1\r\n");
-	_delay_ms(100);	
-	// se dezactiveaza modul de transfer transparent al datelor 
+	
+	sei();
+	
+	USART0_print("AT+CWMODE=3\r\n");
+	_delay_ms(100);
+	
 	USART0_print("AT+CIPMODE=0\r\n");
-	_delay_ms(100);	
-	// se permit mai multe conexiuni simultane
+	_delay_ms(100);
+	
 	USART0_print("AT+CIPMUX=1\r\n");
-	_delay_ms(100);	
-	// se conecteaza modululul la reteaua Wi-Fi
+	_delay_ms(100);
+	
 	USART0_print("AT+CWJAP=\"Galaxy\",\"123456789\"\r\n");
-	_delay_ms(7000);	
-	// se configureaza modulul astfel incat sa asculte pe portul 101 
+	_delay_ms(7000);
+	
 	USART0_print("AT+CIPSERVER=1,101\r\n");
-	_delay_ms(100);		
-	// se obtine adresa IP atribuita modulului
-	USART0_print("AT+CIPSTA?\r\n");
-	_delay_ms(1000);	
+	_delay_ms(100);
+	
 	index_buffer=0;
-	// se cauta prima aparitie a caracterului "
+	USART0_print("AT+CIPSTA?\r\n");
+	_delay_ms(3000);
+	
 	char *adresa_ip = strchr(rx_buffer, '"');
 	if (adresa_ip)
 	{
-		adresa_ip += 1;	
-		//se cauta a doua aparitie a caracterului "	
+		adresa_ip += 1;
+		//cauta adresa caracterului " cand acesta apare prima data in sir
 		char *finish = strchr(adresa_ip, '"');
 		int pozitie = finish-adresa_ip;
-		adresa_ip[pozitie]='\0';		
+		adresa_ip[pozitie]='\0';
+		
 	}
 	LCD_Clear();
-	LCD_send_string(adresa_ip);	
+	LCD_send_string(adresa_ip);
+	
 	cli();
+
 }
 
 int main()
 {
 	
-	char string[10];
+	
 	USART0_init();
 	timer0_init();
 	timer1_init();
@@ -621,10 +589,9 @@ int main()
 			OCR1B=0;
 			
 			
-		}		
-		dtostrf(dist, 2, 2, string);
-		LCD_Clear();
-		LCD_send_string(string);
+		}
+		
+		
 		if (date_primite == 1)
 		{
 			index_buffer=0;
@@ -632,21 +599,6 @@ int main()
 			
 			date_primite = 0;
 		}
-		
-		
-		if(sem_st == 0)
-		{					
-			PORTD &= ~(1 << PD3);							
-		}
-		
-		if(sem_dr == 0)
-		{
-			PORTD &= ~(1 << PD2);
-		}
-				
-		
-				
-		
 	}
 	
 
