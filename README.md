@@ -8,7 +8,7 @@ forward, brake, backward, horn, left turn signal, right turn signal, hazard ligh
 The electrical schematic of the remote-controlled car was created using OrCAD Capture CIS 16.6, and later transferred to OrCAD PCB Editor for the design of the printed circuit board (PCB) required for the car's operation.
 
 ![image](https://github.com/user-attachments/assets/c6198bc8-a951-4a00-9405-cc71759a3d86)
-![image](https://github.com/user-attachments/assets/6f256bf7-7c13-46ff-9eb3-e35d075ae93d)
+![Picture1](https://github.com/user-attachments/assets/b4aede68-9981-40ed-bf23-e4283e3eec46)
 
 
 The printed circuit board (PCB) measures 90mm x 140mm, with a copper foil thickness of 35 µm and is made of FR4 material with a double-layer design. The board has a thickness of 1.6 mm, and all components are placed on the top side (TOP layer). The origin is set in the bottom-left corner, ensuring all elements have positive coordinates. Both SMD components, such as resistors and capacitors, and THT components are used. A clearance of 50 mil is maintained from the board's edge. Additionally, four mounting holes with a 4 mm diameter are included to secure the PCB to the chassis. The GND and VCC traces have a width of 40 mil, while other traces are 20 mil wide.
