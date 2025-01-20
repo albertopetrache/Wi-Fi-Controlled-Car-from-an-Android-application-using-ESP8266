@@ -16,9 +16,9 @@ The printed circuit board (PCB) measures 90mm x 140mm, with a copper foil thickn
 
 For the power circuit, I chose to use two voltage regulators: an LM1086IT-3.3 to provide a stable 3.3V supply and an LM7805 to provide a stable 5V supply. The LM1086IT-3.3 regulator is used to power the ESP-01 Wi-Fi module, which operates at 3.3V, while the LM7805 is used to power the other components. Both regulators are powered by six AA batteries, each supplying 1.5V, for a total of 9V. For the four DC motors, a separate power supply consisting of four AA batteries (1.5V each, providing 6V in total) was selected.
 
-I have implemented two distinct activities for the Android application. The first activity represents the application's startup screen, where the IP address and port are entered, while in the second one, I have included buttons for transmitting commands
 
 ![image](https://github.com/user-attachments/assets/47839563-4c5d-4601-96b9-67567f62ec55)
 
+I have implemented two distinct activities for the Android application. The first activity represents the application's startup screen, where the IP address and port are entered, while in the second one, I have included buttons for transmitting commands.
 
 ![image](https://github.com/user-attachments/assets/235e1265-170d-46ce-a999-303ad1a066df)
